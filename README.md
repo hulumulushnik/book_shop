@@ -19,6 +19,8 @@ python manage.py runserver
 - GET /api/authors/<id>/
 - GET /api/books/
 - GET /api/books/available/
-- GET /api/books/<id>/         (розширений BookDetailSerializer)
+- GET /api/books/<id>/ (розширений BookDetailSerializer)
 - GET /api/borrowings/
-- /admin/                      (Django admin)
+- # /admin/ (Django admin)
+
+# book_shop
