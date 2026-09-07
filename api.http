@@ -1,0 +1,110 @@
+@baseUrl = http://127.0.0.1:8000/api
+
+### Список авторів
+GET {{baseUrl}}/authors/
+Content-Type: application/json
+
+###
+
+### Список книг
+GET {{baseUrl}}/books/
+Content-Type: application/json
+
+###
+
+### Список позик
+GET {{baseUrl}}/borrowings/
+Content-Type: application/json
+
+###
+
+### Деталі автора (author_id = 1)
+GET {{baseUrl}}/authors/1/
+Content-Type: application/json
+
+###
+
+### Створити автора
+POST {{baseUrl}}/authors/
+Content-Type: application/json
+
+{
+  "name": "Тарас Шевченко",
+  "bio": "Український поет, письменник, художник.",
+  "birth_date": "1814-03-09"
+}
+
+###
+
+### Список книг (перевірка, що новий автор ще без книг)
+GET {{baseUrl}}/books/
+
+###
+
+### Створити книгу
+POST {{baseUrl}}/books/
+Content-Type: application/json
+
+{
+  "title": "Кобзар",
+  "author": 1,
+  "description": "Збірка поетичних творів.",
+  "isbn": "9789660355761",
+  "published_date": "1840-01-01",
+  "pages": 240,
+  "available_copies": 5
+}
+
+###
+
+### Деталі книги (pk = 1)
+GET {{baseUrl}}/books/1/
+Content-Type: application/json
+
+###
+
+### Повне оновлення книги (PUT)
+PUT {{baseUrl}}/books/1/
+Content-Type: application/json
+
+{
+  "title": "Кобзар (ювілейне видання)",
+  "author": 1,
+  "description": "Оновлений опис збірки.",
+  "isbn": "9789660355761",
+  "published_date": "1840-01-01",
+  "pages": 260,
+  "available_copies": 3
+}
+
+###
+
+### Часткове оновлення книги (PATCH)
+PATCH {{baseUrl}}/books/1/
+Content-Type: application/json
+
+{
+  "available_copies": 0
+}
+
+###
+
+### Список доступних книг (має НЕ показати книгу з available_copies = 0)
+GET {{baseUrl}}/books/available/
+Content-Type: application/json
+
+###
+
+### Видалити автора (author_id = 1)
+DELETE {{baseUrl}}/authors/1/
+
+###
+
+### Створити позику (потрібні існуючі id книги та читача)
+POST {{baseUrl}}/borrowings/
+Content-Type: application/json
+
+{
+  "book": 2,
+  "reader": 1
+}
