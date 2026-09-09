@@ -16,4 +16,5 @@ urlpatterns = [
 
     # Borrowings
     path('borrowings/', views.BorrowingListCreateAPIView.as_view(), name='borrowing_list_create'),
+    path('borrowings/active/', views.ActiveBorrowingsAPIView.as_view(), name='active_borrowings'),
 ]
